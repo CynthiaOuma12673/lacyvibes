@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+{% endblock %}
+{% block content %}
+<div class="container p-3">
+  {{wtf.quick_form(form,button_map={'submit':'info btn-sm'})}}
+</div>
+<footer class="fixed-bottom">
+  <p class="text-center text-white"><i>@Copyright, lacyVibes 2022</i></p>
+</footer>
+{% endblock %}

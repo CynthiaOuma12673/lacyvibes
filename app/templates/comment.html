@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+{% macro display(vibes) %}
+
+<div class="container-fluid">
+    {% if vibes %}
+    {% for vibe in vibes %}
+    <article class="media">
+        <div class="media-body">
+            <div class="details">
+                <small class="time">
+                    Created On: {{vibe.time.strftime('%Y-%m-%d')}}
+                </small>
+                {% if user == current_user %}
+                {% endif %}
+                <h4>{{ vibe.title }}</h4>
+                <p>{{ vibe.post }}</p>
+                <span>
+                    <a href="{{url_for('main.comment',vibe_id = vibe.id)}}"><button class="btn btn-info">Comments</button></a>
+                    <a class="btn btn-info" href="{{url_for('main.update_vibe', vibe_id = vibe.id)}}">Update vibe</a>
+                    
+                </span>
+            </div>
+        </div>
+        </article>
+    {% endfor %}
+    {% else %}
+    <div class="card">
+    <div class="card-body">
+
+        <p class="card-title">No vibes posted here</p>
+    </div>
+</div>
+{% endif %}
+</div>
+{% endmacro %}

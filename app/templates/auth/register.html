@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+{% import 'bootstrap/wtf.html' as wtf%}
+{% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+{% endblock %}
+{% block content %}
+<div class="container-fluid pt-4 title">
+<div class="row">
+    <div class="col-md-2"></div>
+<div class="col-md-6  form-section">
+    <h3 class="title italic"><span style="font-size: 1em;"><i class="fas fa-user-plus"></i></span> Sign Up</h3>
+    <hr>
+    {{wtf.quick_form(registration_form, button_map={'submit':'primary'})}} <br>
+    <p> Already have an account? <a href="{{url_for('auth.login')}}"> Click here to login.</a></p>
+</div>
+<div class="col-md-2"></div>
+</div>
+</div>
+<footer class="fixed-bottom">
+    <p class="text-center text-white">@Copyright, lacyVibes 2022</p>
+</footer>
+<style>
+    .container-fluid{
+          background-color: rgba(23,1,91,255);
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+          height: 100vh;
+          color: white;
+      }
+  </style>
+{% endblock%}
